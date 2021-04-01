@@ -22,11 +22,24 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
 #    	print(row[0])
     	profloss.append(row[1])
 #    	print(row[1])
+#    	total = sum(int(row[1])
 
+
+
+#    print(total)
 #    print(date)
 #    print(profloss)
 #    print(len(date))
 
+#    for amount in profloss:
+#    	total = int(sum(amount))
+
+#total = int([6]) / int(row[5])
+#        review_percent.append(percent)
+
+total = [int(i) for i in profloss]
+#average = sum(total)/len(profloss)
+#avg2 = round(average, 2)
 
 print(f" ")
 print(f" ")
@@ -34,7 +47,14 @@ print(f" ")
 print(f"Financial Analysis")
 print(f"-------------------------------")
 print(f"Total Months: {len(date)}")
+print(f"Total: ${sum(total)}")
+print(f"Average Change: ${round((sum(total)/len(profloss)), 2)}")
+#print(f"Average Change: ${avg2}")
+print(f"Greatest Increase in Profits: ")
+print(f"Greatest Decrease in Profits: ")
 
+
+#print(sum(total))
 
 #    	date.append(row[0])
 #    	profloss.append(row[1])
