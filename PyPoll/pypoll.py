@@ -4,12 +4,10 @@ import csv
 # Set path for file
 csvpath = os.path.join("Resources", "PyPoll_Resources_election_data.csv")
 
-
 # create lists to store data
 candidate = []
 votes = []
 num_votes = 0
-
 
 # read in the csv file
 with open(csvpath, newline='', encoding='utf-8') as csvfile:
@@ -29,7 +27,6 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
         #if the candidate is already on the list, just give them a vote
         else:
         	votes[candidate.index(row[2])] = votes[candidate.index(row[2])] + 1
-
 
 #for debugging purposes
 # Voter ID, County, Candidate
@@ -67,3 +64,19 @@ print(f"Winner: {winner}")
 print(f"-------------------------------")
 
 #output the results.txt file to the Analysis folder
+with open("Analysis/Results.txt","w") as txtfile:
+    txtfile.write(f"Election Results\n")
+    txtfile.write(f"-------------------------------\n")
+    txtfile.write(f"Total Votes: {num_votes}\n")
+    txtfile.write(f"-------------------------------\n")
+    for x in range(len(candidate)):
+    	vote_p = ((votes[x]/num_votes)*100)
+    	txtfile.write(f"{candidate[x]}: {round(vote_p):.3f}% ({votes[x]})\n")
+    txtfile.write(f"-------------------------------\n")
+    win_votes = 0
+    for y in range(len(candidate)):
+    	if votes[y] > win_votes:
+    		winner = candidate[y]
+    		win_votes = votes[y]
+    txtfile.write(f"Winner: {winner}\n")
+    txtfile.write(f"-------------------------------\n")
