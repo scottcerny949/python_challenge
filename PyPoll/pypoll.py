@@ -14,12 +14,10 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-
+    
     # read each row of data after the header and append to list while incrementing the vote count
     for row in csvreader:
         num_votes = num_votes + 1
-        #print(row)
         #if the candidate is not on the list, add them and give them a vote
         if candidate.count(row[2]) == 0:
         	candidate.append(row[2])
@@ -27,15 +25,6 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
         #if the candidate is already on the list, just give them a vote
         else:
         	votes[candidate.index(row[2])] = votes[candidate.index(row[2])] + 1
-
-#for debugging purposes
-# Voter ID, County, Candidate
-#print(f"{candidate[0]}")
-#print(candidate)
-#print(votes)
-#print(type(votes))
-#print(type(num_votes))
-#print(f"{range(len(candidate))}")
 
 #display the results in terminal
 print(f" ")

@@ -15,8 +15,7 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-
+    
 # read each row of data after the header and append to list while incrementing the month count
     for row in csvreader:
         months = months + 1
@@ -24,10 +23,6 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
         date.append(row[0])
         profloss.append(float(row[1]))
         
-#for debugging purposes
-#print(date)
-#print(profloss)
-
 #set totalprof to the first profloss number
 totalprof = profloss[0]
 
@@ -37,9 +32,6 @@ totalprof = profloss[0]
 totalchange = 0
 highest = -1000000
 lowest = 1000000
-
-#for debugging purposes
-#print(f" total prof:  {totalprof}")
 
 #start at 1 since we already set totalprof to the first number to determine the change each month
 for n in range (1, months):
@@ -60,12 +52,6 @@ for n in range (1, months):
     elif change < lowest:
         lowest = change
         month_l = date[n]
-
-#for debugging purposes
-#print(f"highest: {highest}")
-#print(f"highest month: {month_h}")
-#print(f"lowest: {lowest}")
-#print(f"lowest month: {month_l}")
 
 #display the financial analysis in terminal
 print(f" ")
