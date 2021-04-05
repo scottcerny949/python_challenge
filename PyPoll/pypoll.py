@@ -30,8 +30,13 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
 
 
 # Voter ID, County, Candidate
-#print(f"{county[0]}")
+
 #print(f"{candidate[0]}")
+
+for y in range(len(candidate)):
+	print(f"{votes[y]/num_votes}")
+
+
 
 print(candidate)
 print(votes)
@@ -42,10 +47,8 @@ print(f"Election Results")
 print(f"-------------------------------")
 print(f"Total Votes: {num_votes}")
 print(f"-------------------------------")
-print(f"{candidate[0]}: {votes[0]}")
-print(f"{candidate[1]}: {votes[1]}")
-print(f"{candidate[2]}: {votes[2]}")
-print(f"{candidate[3]}: {votes[3]}")
+for x in range(len(candidate)):
+	print(f"{candidate[x]}: {votes[x]}")
 print(f"-------------------------------")
 print(f"Winner: ")
 print(f"-------------------------------")
