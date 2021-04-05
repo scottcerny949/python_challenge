@@ -33,13 +33,15 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
 
 #print(f"{candidate[0]}")
 
-for y in range(len(candidate)):
-	print(f"{votes[y]/num_votes}")
+#for y in range(len(candidate)):
+#	print(f"{votes[y]/num_votes}")
 
 
 
-print(candidate)
-print(votes)
+#print(candidate)
+#print(votes)
+#print(type(votes))
+#print(type(num_votes))
 
 print(f" ")
 print(f" ")
@@ -48,7 +50,8 @@ print(f"-------------------------------")
 print(f"Total Votes: {num_votes}")
 print(f"-------------------------------")
 for x in range(len(candidate)):
-	print(f"{candidate[x]}: {votes[x]}")
+	vote_p = ((votes[x]/num_votes)*100)
+	print(f"{candidate[x]}: {round(vote_p):.3f}% ({votes[x]})")
 print(f"-------------------------------")
 print(f"Winner: ")
 print(f"-------------------------------")
