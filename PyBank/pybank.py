@@ -19,7 +19,7 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
 
 # read each row of data after the header and append to list while incrementing the month count
     for row in csvreader:
-        months += 1
+        months = months + 1
         #print(row)
         date.append(row[0])
         profloss.append(float(row[1]))
@@ -31,31 +31,32 @@ with open(csvpath, newline='', encoding='utf-8') as csvfile:
 #set totalprof to the first profloss number
 totalprof = profloss[0]
 
-#set variables to zero
+#set variables
+#set highest and lowest to extreme numbers to start with just in case every month is either higher or greater than zero
+#setting to zero still works for this data set though
 totalchange = 0
-highest = 0
-lowest = 0
+highest = -1000000
+lowest = 1000000
 
 #for debugging purposes
-#print(profloss[0])
 #print(f" total prof:  {totalprof}")
 
-#start at 1 since we already grabbed 0 to determine the change each month
+#start at 1 since we already set totalprof to the first number to determine the change each month
 for n in range (1, months):
 
-    #calculate total amount of profit/loss
-    totalprof += profloss[n]
+    #calculate total amount of profit/loss by adding each month's amount to the total
+    totalprof = totalprof + profloss[n]
     
-    #calculate average change
+    #calculate total change
     change = profloss[n] - profloss[n-1]
-    totalchange += change
+    totalchange = totalchange + change
     
-    #calculate greatest increase
+    #calculate greatest increase and grab matching month
     if change > highest:
         highest = change
         month_h = date[n]
 
-    #calculate greatest decrease    
+    #calculate greatest decrease and grab matching month
     elif change < lowest:
         lowest = change
         month_l = date[n]
